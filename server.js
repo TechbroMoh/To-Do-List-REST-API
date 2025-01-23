@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -8,11 +10,19 @@ const port = process.env.PORT || 4000;
 // Import your Task model
 const Task = require('./api/models/todoListModel');
 
-// Connect to MongoDB (no need for useNewUrlParser and useUnifiedTopology)
+
+
+// Get Mongo URI from the .env file
+const uri = process.env.MONGO_URI;
+
 mongoose.Promise = global.Promise; // Use global Promise for Mongoose
-mongoose.connect('mongodb://localhost:27017/Tododb')
-  .then(() => console.log('MongoDB connected successfully'))
+
+console.log('MONGO_URI:', process.env.MONGO_URI);// Check if the URI is loaded correctly
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected successfully to Atlas'))
   .catch((err) => console.error('MongoDB connection error:', err));
+
 
 // Middleware to parse incoming requests
 app.use(bodyParser.urlencoded({ extended: true }));

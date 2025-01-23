@@ -57,7 +57,7 @@ exports.update_a_task = async function(req, res) {
 // Delete a task by ID
 exports.delete_a_task = async function(req, res) {
   try {
-    // Using findByIdAndDelete (recommended)
+    // Using findByIdAndDelete 
     const task = await Task.findByIdAndDelete(req.params.taskId);
     
     if (!task) {

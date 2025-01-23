@@ -1,82 +1,111 @@
-**ToDoList API**
+# ToDoList API
 
-**Introduction**
+## Introduction
+The **ToDoList API** is a RESTful web service that allows users to manage their tasks efficiently. It enables **CRUD (Create, Read, Update, Delete)** operations on tasks stored in a **MongoDB database**.
 
-The ToDoList API is a RESTful web service that allows users to manage their tasks. 
-It follows the principles of Representational State Transfer (REST), which is an 
-architectural style for distributed hypermedia systems. This API allows users to 
-perform CRUD (Create, Read, Update, Delete) operations on task data stored in a MongoDB database.
+## Project Scope and Objectives
+This API allows users to:
+- ✅ Add new tasks to a list
+- ✅ Update task details (e.g., status, description)
+- ✅ Delete tasks
+- ✅ View all tasks or a specific task
 
-**Supported Operations:**
-**Create:** Add a new task.
-**Read:** View all tasks or specific tasks.
-**Update:** Modify an existing task's details.
-**Delete:** Remove a task from the list.
+### Tech Stack
+- **Node.js** – JavaScript runtime
+- **Express.js** – Fast web framework for Node.js
+- **MongoDB Atlas** – Cloud database
+- **Mongoose** – ODM library for MongoDB
 
-**Project Scope and Objectives**
+## Prerequisites
+Before running this project, ensure you have:
+- **Node.js** installed
+- **MongoDB Atlas account** (or MongoDB installed locally)
+- **Postman** (optional, for testing API requests)
 
-This API is designed to manage a simple to-do list system for users to:
+## Getting Started
 
-Add new tasks to a list.
-Update the status of existing tasks.
-Delete tasks when completed.
-View all tasks or individual tasks.
+### 1. Clone the Repository
+```bash
+git clone https://github.com/TechbroMoh/To-Do-List-REST-API.git
+cd To-Do-List-REST-API
+```
 
-The back-end is built using Node.js, Express, and MongoDB to handle database operations. 
-Mongoose is used as an Object Data Modeling (ODM) library to interact with MongoDB efficiently.
-
-**Prerequisites**
-Before running this project, ensure you have the following installed on your system:
-
-Node.js 
-MongoDB (Make sure the MongoDB service is running)
-
-
-You can install the necessary packages and dependencies by following the instructions below.
-
-**Getting Started**
-
-Clone the repository:
-
-First, clone the repository to your local machine:
-
-git clone https://git@github.com:TechbroMoh/To-Do-List-REST-API.git
-
-**Install dependencies:**
-
-Run the following command in your terminal to install all required dependencies:
-
+### 2. Install Dependencies
+```bash
 npm install
-**Start MongoDB:**
+```
 
-Open a new terminal tab or window and start MongoDB:
+### 3. Set Up MongoDB Atlas Connection
+1. Go to **[MongoDB Atlas](https://www.mongodb.com/atlas/database)**
+2. Create a **new cluster**
+3. Get your **MongoDB connection string**
+4. Create a **`.env`** file in the root of your project:
+```bash
+touch .env
+```
+5. Add this inside `.env`:
+```
+MONGO_URI=mongodb+srv://your-username:your-password@your-cluster.mongodb.net/ToDo
+PORT=4000
+```
 
-mongod
-**Start the API server:**
+### 4. Start MongoDB Shell (Local Users Only)
+If using **local MongoDB**, run:
+```bash
+mongosh
+```
+If using **MongoDB Atlas**, skip this step.
 
-In your main terminal, start the Node.js server:
+### 5. Run the Server
+```bash
+node server.js
+```
+You'll see:
+```
+Todo List RESTful API server started on port: 4000
+MongoDB connected successfully to Atlas
+```
 
-npm run start
-This will start the API on localhost:4000. You can now access the API from your browser or Postman.
+## API Endpoints
 
-**API Endpoints**
-The ToDoList API exposes the following routes for interaction:
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| **GET** | `/tasks` | Get all tasks |
+| **GET** | `/tasks/:taskId` | Get a specific task by ID |
+| **POST** | `/tasks` | Create a new task |
+| **PUT** | `/tasks/:taskId` | Update a task by ID |
+| **DELETE** | `/tasks/:taskId` | Delete a task |
 
-GET /tasks: Get all tasks.
-GET /tasks/:taskId: Get a task by ID.
-POST /tasks: Create a new task.
-PUT /tasks/:taskId: Update a task by ID.
-DELETE /tasks/:taskId: Delete a task by ID.
+### Example Request - Create a Task
+**POST** `/tasks`
+```json
+{
+  "name": "Write Blog Post",
+  "description": "Complete the article on MongoDB",
+  "status": ["pending"]
+}
+```
 
-**Testing the API**
-You can test the API using tools like Postman. Here are some example commands for testing:
+## Testing the API with Postman
+1. Open **Postman**
+2. Select **POST**
+3. Enter `http://localhost:4000/tasks`
+4. Go to **Body → raw → JSON** and add:
+```json
+{
+  "name": "Techbro@Civic",
+  "description": "Milk, Eggs, Bread",
+  "status": ["ongoing"]
+}
+```
+5. Click **Send** ✅
 
-**License**
-This project is licensed under the MIT License 
+## License
+This project is licensed under the **MIT License**.
 
-**Acknowledgements**
+## Acknowledgements
+- **Express.js** – Web framework
+- **Mongoose** – MongoDB ODM
+- **MongoDB Atlas** – NoSQL cloud database
+- **Node.js** – JavaScript runtime
 
-Express.js: A fast web framework for Node.js.
-Mongoose: MongoDB ODM library for Node.js.
-MongoDB: NoSQL database used to store task data.
-Node.js: JavaScript runtime for building the API.

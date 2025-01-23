@@ -8,9 +8,14 @@ var TaskSchema = new Schema({
     type: String,
     required: 'Kindly enter the name of the task'
   },
+  description: {
+    type: String,
+    required: false,  
+    default: 'No description provided'  
+  },
   Created_date: {
     type: Date,
-    default: Date.now
+    default: Date.now  
   },
   status: {
     type: [{
@@ -23,4 +28,3 @@ var TaskSchema = new Schema({
 
 module.exports = mongoose.model('Tasks', TaskSchema);
 
-//todoListModel.js

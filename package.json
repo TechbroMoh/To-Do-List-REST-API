@@ -14,12 +14,11 @@
   "devDependencies": {
     "nodemon": "^3.1.9"
   },
+  
   "dependencies": {
-
     "body-parser": "^1.20.3",
-
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
-
     "mongodb": "^6.12.0",
     "mongoose": "^8.9.5"
   },
@@ -27,7 +26,6 @@
     "type": "git",
     "url": "git+https://github.com/TechbroMoh/To-Do-List-REST-API.git"
   },
-  
   "bugs": {
     "url": "https://github.com/TechbroMoh/To-Do-List-REST-API/issues"
   },
