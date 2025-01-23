@@ -94,7 +94,7 @@ MongoDB connected successfully to Atlas
 ```json
 {
   "name": "Techbro@Civic",
-  "description": "Milk, Eggs, Bread",
+  "description": "Civic Voices is the Public Participation platform",
   "status": ["ongoing"]
 }
 ```
